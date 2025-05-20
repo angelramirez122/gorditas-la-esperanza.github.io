@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorditas La Esperanza: A la Tradición</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F4E3; /* Crema muy claro (color de respaldo) */
+            color: #36454F; /* Gris carbón suave */
+            line-height: 1.8;
+            font-size: 1.1em;
+            /* Estilos para la imagen de fondo de Palenque */
+            background-image: url('images/informe_palenque.jpg');
+            background-size: cover; /* Cubre todo el fondo */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-attachment: fixed; /* Fija la imagen al fondo mientras se hace scroll */
+            background-position: center center; /* Centra la imagen de fondo */
+        }
+        header {
+            background-color: rgba(107, 39, 55, 0.8); /* Borgoña oscuro con transparencia */
+            color: #F8F4E3;
+            padding: 1.5em 0;
+            text-align: center;
+            border-bottom: 2px solid #D4AF37; /* Dorado sutil */
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2em;
+        }
+        header .logo {
+            max-width: 150px;
+            margin-bottom: 1em;
+        }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin: 0.2em 0;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 1.2em;
+            font-style: italic;
+            margin-top: 0;
+        }
+        nav {
+            background-color: rgba(140, 71, 93, 0.8); /* Borgoña más claro con transparencia */
+            padding: 0.8em 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 0 1.5em;
+        }
+        nav ul li a {
+            color: #F8F4E3;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1em;
+            padding: 0.5em 0;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #D4AF37; /* Dorado sutil */
+            border-bottom: 1px solid #D4AF37;
+        }
+        .hero {
+            /* Esta sección ya no necesita una imagen de fondo propia, el body ya la tiene */
+            position: relative;
+            height: auto; /* Ajustar altura al contenido */
+            overflow: hidden;
+            padding: 4em 0; /* Añadimos un poco de espacio */
+            text-align: center;
+            background-color: rgba(0,0,0,0.3); /* Un poco de oscuridad para resaltar el texto */
+        }
+        /* Eliminado: .hero img, ya que ahora la imagen de Palenque es el background del body */
+        .hero-text {
+            color: #F8F4E3;
+            text-align: center;
+            z-index: 1;
+            width: 80%;
+            margin: 0 auto;
+        }
+        .hero-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            margin-bottom: 0.2em;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        .hero-text p {
+            font-size: 1.5em;
+            font-style: italic;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 3em auto;
+            padding: 0 2em;
+            background-color: rgba(248, 244, 227, 0.9); /* Fondo crema con ligera transparencia para el contenido */
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding-bottom: 2em;
+        }
+        section {
+            padding: 2em 0;
+            border-bottom: 1px solid #D4AF37; /* Dorado sutil */
+            margin-bottom: 2em;
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+        h2.section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            color: #6B2737;
+            text-align: center;
+            margin-bottom: 1.5em;
+            position: relative;
+            padding-bottom: 0.5em;
+        }
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: #D4AF37;
+        }
+        .content-block {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3em;
+            gap: 2em;
+            flex-wrap: wrap;
+        }
+        .content-block.reverse {
+            flex-direction: row-reverse;
+        }
+        .content-block .text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .content-block .image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        .content-block .image img {
+            max-width: 100%;
+            height: auto;
+            border: 5px solid #D4AF37; /* Marco dorado */
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+            border-radius: 4px;
+        }
+        .nutritional-info ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5em;
+        }
+        .nutritional-info ul li {
+            background-color: #F0EDE3; /* Crema un poco más oscuro */
+            padding: 1.5em;
+            border-left: 5px solid #6B2737;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+        .nutritional-info ul li h3 {
+            font-family: 'Playfair Display', serif;
+            color: #6B2737;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        .nutritional-info ul li p {
+            margin: 0.5em 0;
+        }
+        .chart-container {
+            margin: 2em 0;
+            background-color: #ffffff; /* Fondo blanco para la gráfica */
+            padding: 2em;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+        footer {
+            background-color: rgba(107, 39, 55, 0.8); /* Borgoña oscuro con transparencia */
+            color: #F8F4E3;
+            text-align: center;
+            padding: 2em 0;
+            margin-top: 3em;
+            border-top: 2px solid #D4AF37;
+        }
+        footer .contact-info p {
+            margin: 0.5em 0;
+        }
+        footer .logo-footer {
+            max-width: 100px;
+            margin-top: 1em;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+            .hero-text h2 {
+                font-size: 3em;
+            }
+            .hero-text p {
+                font-size: 1.2em;
+            }
+            nav ul li {
+                margin: 0 0.8em;
+            }
+            .container {
+                margin: 2em auto;
+                padding: 0 1em;
+            }
+            h2.section-title {
+                font-size: 2em;
+            }
+            .content-block {
+                flex-direction: column;
+            }
+            .content-block.reverse {
+                flex-direction: column;
+            }
+            .content-block .text,
+            .content-block .image {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <img src="images/IMG-20250512-WA0007.jpg" alt="Gorditas La Esperanza Logo" class="logo">
+            <h1>Gorditas La Esperanza</h1>
+            <p>A la Tradición</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#historia">Nuestra Historia</a></li>
+            <li><a href="#productos">Nuestros Productos</a></li>
+            <li><a href="#nutricion">Información Nutricional</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div class="hero-text">
+            <h2>Reinvención y Tradición de Sabor</h2>
+            <p>Donde cada bocado es un legado.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="historia">
+            <h2 class="section-title">Disquisiciones sobre la Génesis y Evolución de la Gordita en el Mosaico Gastronómico Mexicano</h2>
+            <div class="content-block">
+                <div class="text">
+                    <p>Ahondar en la etimología y los anales de la gordita nos conduce ineluctablemente a las profundidades de la culinaria mesoamericana, donde el *Zea mayas*, venerado sustento de civilizaciones pretéritas fungía como el axis primordial de su dieta. En aquel entonces, primigenias formas de tortas crasas y pletóricas de viandas constituían el preludio ancestral de lo que hoy conocemos. Estas preparaciones, cocidas sobre el *Comal ancestral*, evocan una conexión directa con las prácticas alimentarias de culturas tan excelsas como la mexica, cuyos vestigios aún palpitan en la memoria colectiva.</p>
+                    <p>La irrupción del orbe hispánico en el siglo XVI trajo consigo una metamorfosis en el panorama gastronómico. La introducción de *Triticum vulgare* (Trigo común), la untuosa *adeps suinus* (Suave y grasosa) y los lácteos, otrora desconocidos en estas latitudes, propició una bifurcación en el linaje de la gordita. En las septentrionales regiones, donde el trigal halló un terruño propicio, emergió la variante de harina, cuya textura, enriquecida por la manteca, ofrecía una experiencia paliatoria diversa.</p>
+                </div>
+                <div class="image">
+                    <img src="images/12367546659383063159.png" alt="Gorditas antiguas o masa de maíz">
+                </div>
+            </div>
+            <div class="content-block reverse">
+                <div class="text">
+                    <p>Con el decurso del tiempo, la gordita, cual crisálida culinaria, experimentó una profusión de adaptaciones regionales. Su morfología, dimensiones y los *farcimina* que la colman se diversificaron al albur de la despensa local y los gustos vernáculos. Así, distinguimos las gorditas de comal, cocidas a la usanza vetusta; las gorditas infladas, cuyo alveolo interior aguarda el sustento; e incluso las gorditas dulces, un contrapunto melífero a la tradición salada.</p>
+                    <p>En el presente, la gordita se erige como un baluarte de la cocina mexicana, omnipresente en los fogones domésticos, los tianguis bulliciosos y los cenáculos gastronómicos. Su ductilidad la predispone a una miríada de rellenos, desde los guisados consuetudinarios hasta las innovaciones culinarias contemporáneas.</p>
+                    <p>En el contexto específico de Palenque, urbe enclavada en el seno del pródigo suelo chiapaneco, es plausible colegir que las gorditas de masa de maíz ostenten una raigambre más profunda, dada la abundancia del gramíneo en la región. No obstante, la influencia de la cocina norteña podría haber introducido la variante de harina. Los rellenos, sin duda, reflejarán la riqueza del terruño, incorporando quesos de factura local, hierbas aromáticas autóctonas y, acaso, el mordisco característico del *Capsicum* local.</p>
+                    <p>En suma, la gordita trasciende su mera condición de alimento; constituye un palimpsesto de la historia culinaria mexicana, una amalgama de herencias prehispánicas y europeas, y un compendio de la pluralidad regional que enriquece la gastronomía de esta nación. Cada bocado es un viaje a través del tiempo, una degustación de saberes ancestrales y una celebración de la inventiva culinaria popular. Es, en esencia, un verdadero emblema del arte de la cocina mexicana.</p>
+                </div>
+                <div class="image">
+                    <img src="images/2160423786963243593.jpeg" alt="Ilustración de la evolución de las gorditas">
+                </div>
+            </div>
+        </section>
+
+        <section id="productos">
+            <h2 class="section-title">Ficha Técnica de Productos e Ingredientes</h2>
+            <div class="nutritional-info">
+                <ul>
+                    <li>
+                        <h3>Gordita de Harina (aprox. por porción)</h3>
+                        <p>Calorías: 150-250 kcal (dependiendo del tamaño y la grasa añadida)</p>
+                        <p>Carbohidratos: 25-40 g</p>
+                        <p>Proteínas: 4-7 g</p>
+                        <p>Grasas: 4-10 g (principalmente si se usa manteca o aceite)</p>
+                        <p>Fibra: 1-2 g</p>
+                        <p class="small-text">También puede contener pequeñas cantidades de vitaminas del grupo B y minerales como el hierro.</p>
+                    </li>
+                    <li>
+                        <h3>Gordita de Masa de Maíz (aprox. por porción)</h3>
+                        <p>Calorías: 120-200 kcal (dependiendo del tamaño y la grasa añadida)</p>
+                        <p>Carbohidratos: 20-35 g</p>
+                        <p>Proteínas: 3-5 g</p>
+                        <p>Grasas: 2-8 g (principalmente si se usa manteca o aceite)</p>
+                        <p>Fibra: 2-4 g (generalmente más alta en fibra que la de harina)</p>
+                        <p class="small-text">Buena fuente de calcio (si el maíz fue nixtamalizado), potasio y algunas vitaminas del grupo B.</p>
+                    </li>
+                    <li>
+                        <h3>Salsa (aprox. por porción pequeña - 2-3 cucharadas)</h3>
+                        <p>Calorías: 10-30 kcal (principalmente de los vegetales y un poco de grasa si se usa aceite en su preparación)</p>
+                        <p>Carbohidratos: 2-5 g (principalmente azúcares naturales de los vegetales)</p>
+                        <p>Proteínas: <1 g</p>
+                        <p>Grasas: 0-2 g (dependiendo de si se añade aceite)</p>
+                        <p>Fibra: <1 g</p>
+                        <p class="small-text">Aporta vitaminas (como la vitamina C del tomate y el chile), minerales y antioxidantes, aunque en pequeñas cantidades por porción.</p>
+                    </li>
+                    <li>
+                        <h3>Media Crema (aprox. por 2 cucharadas)</h3>
+                        <p>Calorías: 50-100 kcal (dependiendo del contenido de grasa)</p>
+                        <p>Carbohidratos: 1-2 g (principalmente lactosa)</p>
+                        <p>Proteínas: <1 g</p>
+                        <p>Grasas: 5-10 g (principalmente grasas saturadas)</p>
+                        <p class="small-text">Aporta calcio y algunas vitaminas liposolubles (como la vitamina A).</p>
+                    </li>
+                    <li>
+                        <h3>Queso Fresco (aprox. por 30 g)</h3>
+                        <p>Calorías: 60-80 kcal</p>
+                        <p>Carbohidratos: 1-2 g</p>
+                        <p>Proteínas: 5-7 g</p>
+                        <p>Grasas: 4-6 g (principalmente grasas saturadas)</p>
+                        <p class="small-text">Buena fuente de calcio y proteínas.</p>
+                    </li>
+                     <li>
+                        <h3>Queso Cotija (aprox. por 30 g)</h3>
+                        <p>Calorías: 100-120 kcal</p>
+                        <p>Carbohidratos: <1 g</p>
+                        <p>Proteínas: 7-9 g</p>
+                        <p>Grasas: 8-10 g</p>
+                        <p class="small-text">Mayor contenido de grasa y sodio que el queso fresco. Buena fuente de calcio y proteínas.</p>
+                    </li>
+                    <li>
+                        <h3>Queso Panela (aprox. por 30 g)</h3>
+                        <p>Calorías: 70-90 kcal</p>
+                        <p>Carbohidratos: 1-2 g</p>
+                        <p>Proteínas: 6-8 g</p>
+                        <p>Grasas: 4-6 g</p>
+                        <p class="small-text">Bajo en grasa en comparación con otros quesos. Buena fuente de calcio y proteínas.</p>
+                    </li>
+                    <li>
+                        <h3>Queso Feta (aprox. por 30 g)</h3>
+                        <p>Calorías: 70-90 kcal</p>
+                        <p>Carbohidratos: 1 g</p>
+                        <p>Proteínas: 5-7 g</p>
+                        <p>Grasas: 5-7 g</p>
+                        <p class="small-text">Mayor contenido de sodio que otros quesos frescos. Buena fuente de calcio y proteínas.</p>
+                    </li>
+                    <li>
+                        <h3>Queso Ranchero (aprox. por 30 g)</h3>
+                        <p class="small-text">La composición nutricional puede variar bastante dependiendo del tipo específico de queso ranchero. Generalmente se encuentra en un rango similar al queso fresco o al queso panela en términos de calorías, proteínas y grasas.</p>
+                    </li>
+                </ul>
+            </div>
+            <h2 class="section-title" id="nutricion">Análisis Nutricional de Nuestros Componentes Clave</h2>
+            <div class="chart-container">
+                <img src="images/informe_grafica_nutricional.png" alt="Gráfica de perfil nutricional de gorditas y complementos">
+                <p style="text-align: center; font-style: italic; margin-top: 1em;">*Valores aproximados por porción, basados en datos medios.</p>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2 class="section-title">Contáctenos</h2>
+            <div style="text-align: center;">
+                <p>Para Gorditas La Esperanza, cada cliente es parte de nuestra tradición. No dude en contactarnos para cualquier consulta o sugerencia.</p>
+                <p><strong>Dirección:</strong> La Primavera, 29960 Palenque, Chis., México.</p>
+                <p><strong>Teléfono:</strong> [Tu número de teléfono]</p>
+                <p><strong>Correo Electrónico:</strong> [Tu correo electrónico]</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="contact-info">
+            <p>&copy; 2025 Gorditas La Esperanza. Todos los derechos reservados.</p>
+            <p>A la Tradición.</p>
+            <p>Gorditas La Esperanza</p>
+        </div>
+        <img src="images/IMG-20250512-WA0007.jpg" alt="Gorditas La Esperanza Logo" class="logo-footer">
+    </footer>
+
+</body>
+</html>
